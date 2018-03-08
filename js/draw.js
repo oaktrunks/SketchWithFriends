@@ -1,4 +1,5 @@
 var path;
+var lines = [];
 
 	var textItem = new PointText({
 		content: 'Click and drag to draw a line.',
@@ -38,12 +39,17 @@ var path;
 		// When the mouse is released, simplify it:
 		path.simplify(2.5);
         
-        //Send pathData to server so that it can be recreated
-        console.log(path.pathData)
+        //Logging pathData
+        //console.log(path.pathData)
 
-        var cornerArrow = "M601.54688,25c15.39235,0 30.81206,-2 46,-2c1.88116,0 12.51083,-1.48917 14,0c1.50681,1.50681 0,10.85453 0,13c0,13.66667 0,27.33333 0,41"
-        var recreatedPath = new Path(cornerArrow);
-        recreatedPath.strokeColor = 'black';
+        //Testing line recreation from pathData string
+        // var cornerArrow = "M601.54688,25c15.39235,0 30.81206,-2 46,-2c1.88116,0 12.51083,-1.48917 14,0c1.50681,1.50681 0,10.85453 0,13c0,13.66667 0,27.33333 0,41"
+        // var recreatedPath = new Path(cornerArrow);
+        // recreatedPath.strokeColor = 'black';
+
+        //Pushing newly created path object onto lines array
+        lines.push(path);
+        
 
         // Select the path, so we can see its segments:
 		//path.fullySelected = true;
@@ -52,4 +58,13 @@ var path;
 		//var difference = segmentCount - newSegmentCount;
 		//var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
 		//textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
-	}
+    }
+
+    //debugging stuff
+    $(window).keypress(function(e) {
+        if (e.which === 32) { //pressing spacebar
+    
+            console.log(lines);
+    
+        }
+    });
