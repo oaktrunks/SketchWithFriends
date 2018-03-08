@@ -38,8 +38,13 @@ var path;
 		// When the mouse is released, simplify it:
 		path.simplify(2.5);
         
+        //Send pathData to server so that it can be recreated
         console.log(path.pathData)
-		// Select the path, so we can see its segments:
+
+        var cornerArrow = "M601.54688,25c15.39235,0 30.81206,-2 46,-2c1.88116,0 12.51083,-1.48917 14,0c1.50681,1.50681 0,10.85453 0,13c0,13.66667 0,27.33333 0,41"
+        Path(cornerArrow);
+
+        // Select the path, so we can see its segments:
 		//path.fullySelected = true;
 	
 		//var newSegmentCount = path.segments.length;
