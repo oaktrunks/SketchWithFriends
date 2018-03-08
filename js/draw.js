@@ -37,7 +37,8 @@ var path;
 	
 		// When the mouse is released, simplify it:
 		path.simplify(2.5);
-	
+        
+        console.log(path.pathData)
 		// Select the path, so we can see its segments:
 		//path.fullySelected = true;
 	
