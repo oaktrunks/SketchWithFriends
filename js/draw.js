@@ -1,11 +1,11 @@
 var path;
 var lines = [];
 
-	var textItem = new PointText({
-		content: 'Click and drag to draw a line.',
-		point: new Point(20, 30),
-		fillColor: 'black',
-	});
+	// var textItem = new PointText({
+	// 	content: 'Click and drag to draw a line.',
+	// 	point: new Point(20, 30),
+	// 	fillColor: 'black',
+	// });
 	
 	function onMouseDown(event) {
 		// If we produced a path before, deselect it:
