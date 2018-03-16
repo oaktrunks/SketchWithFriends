@@ -14,4 +14,19 @@
 	<canvas id="drawingBoard" resize="true"></canvas>
 	<button class="button button1">Send</button>
 </body>
+
+<script>
+	$(setCanvasForDevice)
+	//Detect the type of device being used
+	function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+	};
+	//set the canvas size IF the device is not a mobile device
+	function setCanvasForDevice() {
+		if (isMobileDevice() == false){
+			document.getElementById('drawingBoard').style.width = '50%';
+			document.getElementById('drawingBoard').style.height = '75%';
+		}
+	};
+</script>
 </html>
