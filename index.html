@@ -7,12 +7,15 @@
 <script type="text/javascript" src="js/paper.js"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <script type="text/paperscript" src="js/draw.js" canvas="drawingBoard"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
 <link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
 	<canvas id="drawingBoard" resize="true"></canvas>
-	<button id= "sendButton" class="button button1">Send</button>
+	<div class="container">
+	<button id= "sendButton"  style="width:75%" class="button-primary">Send</button>
+	</div>
 </body>
 
 <script>

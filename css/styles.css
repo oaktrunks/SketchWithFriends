@@ -1,4 +1,9 @@
-
+.container{
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    bottom: -90%;
+}
 .button {
     background-color: lightgreen;
     border: none;
@@ -12,9 +17,11 @@
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
+    
 }
 
 .button1 {
+    background-color: lightgreen;
     position: absolute;
     width: 15%;
     bottom: 2%;
