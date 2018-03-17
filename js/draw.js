@@ -65,7 +65,8 @@ var lines = [];
 		url = "http://localhost:5000/sendDrawing"
 
 		data = {
-			"first": "testing",
+			"gamecode": "testing",
+			"alias": "testing",
 			"paths": JSON.stringify(lines)
 		};
 
@@ -91,11 +92,45 @@ var lines = [];
 		jqxhr.fail(failureHandler);
 	}
 
+	function recreateDrawing(gamecode, alias){
+		url = "http://localhost:5000/getDrawing"
+
+		data = {
+			"gamecode": "testing",
+			"alias": "testing",
+		};
+
+
+		//On success, recreates the drawing
+		function register_success(response) {
+			console.log("paths:")
+			console.log(JSON.parse(response))
+			paths = JSON.parse(response)
+
+			//Iterate through array
+			//and create the paths
+			for (var i = 0; i < paths.length; i++) {
+				new Path({
+					segments: paths[i][1]['segments'],
+					strokeColor: paths[i][1]['strokeColor'],
+				});
+			}
+		}
+		function register_failure(response) {
+			console.log(response);
+		}
+
+		my_request("POST", url, data, register_success, register_failure);
+	}
+
     //debugging stuff
     $(window).keypress(function(e) {
         if (e.which === 32) { //pressing spacebar
-    
-            console.log(lines);
-    
+			
+			console.log("lines:")
+			console.log(lines);
+			
+			//Recreate drawing from database
+			recreateDrawing("testing", "testing")
         }
     });
