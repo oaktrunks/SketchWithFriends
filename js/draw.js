@@ -62,7 +62,7 @@ var lines = [];
 
 	//Send button
 	$("#sendButton").click(function() {
-		url = "http://testing.sketchwithfriends.cool/sendDrawing"
+		url = "http://testing.sketchwithfriends.cool:5000/sendDrawing"
 
 		data = {
 			"gamecode": "testing",
