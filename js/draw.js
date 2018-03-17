@@ -60,6 +60,37 @@ var lines = [];
 		//textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
     }
 
+	//Send button
+	$("#sendButton").click(function() {
+		url = "http://localhost:5000/sendDrawing"
+
+		data = {
+			"first": "testing",
+			"paths": JSON.stringify(lines)
+		};
+
+		function register_success(response) {
+			console.log(response);
+		}
+		function register_failure(response) {
+			console.log(response);
+		}
+
+		my_request("POST", url, data, register_success, register_failure);
+	})
+
+	function my_request(method, url, data, successHandler, failureHandler) {
+		var jqxhr = $.ajax({
+			"async": true,
+			"crossDomain": true,
+			"url": url,
+			"method": method,
+			"data": data
+		});
+		jqxhr.done(successHandler);
+		jqxhr.fail(failureHandler);
+	}
+
     //debugging stuff
     $(window).keypress(function(e) {
         if (e.which === 32) { //pressing spacebar
