@@ -22,10 +22,8 @@
 
 .button1 {
     background-color: lightgreen;
-    position: absolute;
-    width: 15%;
-    bottom: 2%;
-    left: 42%;
+    width: 35%;
+    font-size: 24px;   
 }
 .button1:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
