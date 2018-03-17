@@ -62,7 +62,7 @@ var lines = [];
 
 	//Send button
 	$("#sendButton").click(function() {
-		url = "http://localhost:5000/sendDrawing"
+		url = "http://testing.sketchwithfriends.cool/sendDrawing"
 
 		data = {
 			"gamecode": "testing",
@@ -93,7 +93,7 @@ var lines = [];
 	}
 
 	function recreateDrawing(gamecode, alias){
-		url = "http://localhost:5000/getDrawing"
+		url = "http://testing.sketchwithfriends.cool:5000/getDrawing"
 
 		data = {
 			"gamecode": "testing",
