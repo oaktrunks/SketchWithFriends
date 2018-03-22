@@ -96,6 +96,7 @@ def createGame():
     else:
         return jsonify({"success":False,"error":"API error when creating gamecode"}) 
 
+#Function to be called by /createGame API route
 def generateUniqueGamecode():
     alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     gamecodeLength = 5
