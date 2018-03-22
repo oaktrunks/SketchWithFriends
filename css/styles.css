@@ -9,6 +9,13 @@
     position: absolute;
 
 }
+
+.container{
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .button {
     background-color: lightgreen;
     border: none;
@@ -37,6 +44,16 @@
 }
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.buttonHost{
+    position: absolute;
+    top: 35%;
+}
+
+.buttonJoin{
+    position: absolute;
+    top: 50%;
 }
 
 html,
