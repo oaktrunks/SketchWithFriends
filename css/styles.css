@@ -10,7 +10,7 @@
 
 }
 
-.container{
+.buttonWrapper{
     position: relative;
     text-align: center;
     vertical-align: middle;
@@ -20,7 +20,6 @@
     background-color: lightgreen;
     border: none;
     color: black;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -34,26 +33,28 @@
 
 .buttonSend {
     background-color: lightgreen;
-
     font-size: 24px;   
 }
 
 .buttonReset {
     background-color: lightgreen;
-    font-size: 24px;   
+    font-size: 24px;
+    width: 150%;   
 }
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .buttonHost{
-    position: absolute;
-    top: 35%;
+    /* position: absolute; */
+    /* top: 75%;  */
+    width: 35%;
 }
 
 .buttonJoin{
-    position: absolute;
-    top: 50%;
+    /* position: absolute; */
+    /* top: 50%; */
+    width: 35%;
 }
 
 html,
@@ -62,7 +63,11 @@ html,
 		margin: 0;
 		overflow: hidden;
 		height: 100%;
-	}
+    }
+    
+    input {
+        width: 20%;
+    }
 	
 	/* Scale canvas with resize attribute to full size */
 	canvas[resize] {
