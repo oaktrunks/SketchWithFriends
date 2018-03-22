@@ -1,8 +1,13 @@
-.container{
+.containerBelow{
     position: relative;
     text-align: center;
     vertical-align: bottom;
     bottom: -90%;
+}
+
+.containerAbove{
+    position: absolute;
+
 }
 .button {
     background-color: lightgreen;
@@ -20,12 +25,17 @@
     
 }
 
-.button1 {
+.buttonSend {
     background-color: lightgreen;
-    width: 35%;
+
     font-size: 24px;   
 }
-.button1:hover {
+
+.buttonReset {
+    background-color: lightgreen;
+    font-size: 24px;   
+}
+.button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 

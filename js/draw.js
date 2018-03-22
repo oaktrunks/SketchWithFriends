@@ -58,7 +58,8 @@ var lines = [];
 		//var difference = segmentCount - newSegmentCount;
 		//var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
 		//textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
-    }
+	}
+	
 
 	//Send button
 	$("#sendButton").click(function() {
@@ -79,6 +80,29 @@ var lines = [];
 
 		my_request("POST", url, data, register_success, register_failure);
 	})
+
+	//clears the canvas and empties the stored lines array
+	$("#resetButton").click(function(){
+		//console.log(lines)
+		//empty lines array
+		while (lines.length > 0){
+			lines.pop();
+		}
+		//from https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js/19293586
+		paper.project.activeLayer.removeChildren();
+		paper.view.draw();
+		//console.log(lines)
+	})
+
+
+	//reloads the DOM by element ID, may be useful later
+	function reload(id){
+		var container = document.getElementById(id);
+		var content = container.innerHTML;
+		container.innerHTML= content; 	
+	   //this line is to watch the result in console , you can remove it later	
+		console.log(id); 
+	}
 
 	function my_request(method, url, data, successHandler, failureHandler) {
 		var jqxhr = $.ajax({
@@ -131,6 +155,7 @@ var lines = [];
 			console.log(lines);
 			
 			//Recreate drawing from database
-			recreateDrawing("testing", "testing")
+			//recreateDrawing("testing", "testing")
         }
-    });
+	});
+	
