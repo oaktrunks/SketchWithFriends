@@ -152,15 +152,29 @@ var lines = [];
 		my_request("POST", url, data, register_success, register_failure);
 	}
 
+	function createGameCode(){
+		url = "http://testing.sketchwithfriends.cool:5000/createGame"
+
+		//On success, stores gamecode and changes screens
+		function register_success(response) {
+			console.log("gamecode:", response["gamecode"])
+			gamecode = response["gamecode"]
+		}
+
+		function register_failure(response) {
+			console.log(response);
+		}
+
+		my_request("GET", url, "", register_success, register_failure);
+	}
+
     //debugging stuff
     $(window).keypress(function(e) {
         if (e.which === 32) { //pressing spacebar
 			
-			console.log("lines:")
-			console.log(lines);
-			
-			//Recreate drawing from database
-			recreateDrawing("testing", "testing")
-        }
+			console.log("generating gamecode")
+			//Check if gamecode generation is going alright
+			createGameCode();
+		}
 	});
 	
