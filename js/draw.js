@@ -94,6 +94,11 @@ var lines = [];
 		//console.log(lines)
 	})
 
+		//test
+		$("#test").click(function(){
+			recreateDrawing("testing", "testing")
+		})
+
 
 	//reloads the DOM by element ID, may be useful later
 	function reload(id){
@@ -155,7 +160,7 @@ var lines = [];
 			console.log(lines);
 			
 			//Recreate drawing from database
-			//recreateDrawing("testing", "testing")
+			recreateDrawing("testing", "testing")
         }
 	});
 	
