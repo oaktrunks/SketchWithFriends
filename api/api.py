@@ -96,6 +96,28 @@ def createGame():
     else:
         return jsonify({"success":False,"error":"API error when creating gamecode"}) 
 
+@app.route('/joinGame', methods=['POST'])
+def joinGame():
+    """
+    type: POST
+    description:
+        - checks if gamecode is already in mongoDB
+        - checks if game is in the proper gameState to accept players
+    params:
+        gamecode of game to join
+    returns:
+        result of operation; success true or false
+    --------------------------------------------
+    """
+    #Generate a random unique gamecode consisting of alphabetical characters
+    gamecode = request.form['gamecode']
+
+    #Create a blank state for game in db.gamecode collection
+    if gamecode in db.collection_names() and db[gamecode]["gameState"] == 0:
+        return jsonify({"success":True})
+    else:
+        return jsonify({"success":False,"error":"API error when joining game"})
+
 #Function to be called by /createGame API route
 def generateUniqueGamecode():
     alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
