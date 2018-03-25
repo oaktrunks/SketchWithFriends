@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Sketch With Friends!</title>
-	<!-- Load JQuery Library --> <!-- TODO change link to local file -->
-	<script type="text/javascript" src="js/jquery-latest.min.js"></script>
-
-	<!-- Load the Paper.js library -->
-	<script type="text/javascript" src="js/paper.js"></script>
-
-	<!-- Define inlined PaperScript associate it with myCanvas -->
-	<script type="text/paperscript" src="js/draw.js" canvas="drawingBoard"></script>
-	<link rel="stylesheet" href="css/styles.css">
+<!-- Load JQuery Library --> <!-- TODO change link to local file -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="js/paper.js"></script>
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" src="js/draw.js" canvas="drawingBoard"></script>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
 
 </head>
 <body>
+
+		<button id= "joinButton" class="button buttonJoin">Join a Game</button>
+<div id="mainDiv" style="height:100%">
+	<div class="buttonWrapper" style="top: 20%;">
+		<button id= "hostButton" class="button buttonHost">Host a Game</button>
+	</div>
+	<div id="test" class="buttonWrapper" style="top: 35%;">
+		<form>
+			<label for="gameCode">Game Code</label>
+			<input type="text" id="gameCode" name="gameCode">
+		</form>
+		<form>
+			<label for="alias">Alias</label>
+			<input type="text" id="alias" name="alias">
+		</form>
+	</div>
+	<div class="buttonWrapper" style="top: 40%;">
+		<button id= "joinButton" class="button buttonJoin">Join a Game</button>
+	</div>
+
+<div id="drawDiv" style="height:100%">
 	<button id= "test" style="font-size: 56px; width: 100%;">test</button>
 	<div class="containerAbove">
 		<button id= "resetButton" class="button buttonReset">Reset</button>
@@ -23,21 +41,44 @@
 	<div class="containerBelow">
 		<button id= "sendButton" class="button buttonSend">Send</button>
 	</div>
+</div>
+
+</div>
 </body>
-</html>
+
 
 <script>
-$(setCanvasForDevice)
-//Detect the type of device being used
-function isMobileDevice() {
-return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-};
-//set the canvas size IF the device is not a mobile device
-function setCanvasForDevice() {
-	if (isMobileDevice() == false){
-		document.getElementById('drawingBoard').style.width = '50%';
-		document.getElementById('drawingBoard').style.height = '75%';
-	}
-};
+	$(setCanvasForDevice)
+	//Detect the type of device being used
+	function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+	};
+	//set the canvas size IF the device is not a mobile device
+	function setCanvasForDevice() {
+		if (isMobileDevice() == false){
+			document.getElementById('drawingBoard').style.width = '50%';
+			document.getElementById('drawingBoard').style.height = '75%';
+		}
 
+		var x = document.getElementById("drawDiv");
+		x.style.display = "none";
+	};
+
+	function myFunction() {
+	var x = document.getElementById("mainDiv");
+	var y = document.getElementById("drawDiv")
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+		y.style.display = "block";
+		x.style.display = "none";
+		
+	}
+	
+}
+		//test
+		$("#joinButton").click(function(){
+			myFunction();
+		})
 </script>
+</html>
