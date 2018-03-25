@@ -13,7 +13,7 @@
 </head>
 <body>
 
-		<button id= "joinButton" class="button buttonJoin">Join a Game</button>
+		<button id= "changeButton" class="button buttonChange">Change Screen</button>
 <div id="mainDiv" style="height:100%">
 	<div class="buttonWrapper" style="top: 20%;">
 		<button id= "hostButton" class="button buttonHost">Host a Game</button>
@@ -31,7 +31,7 @@
 	<div class="buttonWrapper" style="top: 40%;">
 		<button id= "joinButton" class="button buttonJoin">Join a Game</button>
 	</div>
-
+</div>
 <div id="drawDiv" style="height:100%">
 	<button id= "test" style="font-size: 56px; width: 100%;">test</button>
 	<div class="containerAbove">
@@ -41,8 +41,6 @@
 	<div class="containerBelow">
 		<button id= "sendButton" class="button buttonSend">Send</button>
 	</div>
-</div>
-
 </div>
 </body>
 
@@ -61,23 +59,24 @@
 		}
 
 		var x = document.getElementById("drawDiv");
-		x.style.display = "none";
+		//x.style.display = "none";
 	};
 
 	function myFunction() {
-	var x = document.getElementById("mainDiv");
-	var y = document.getElementById("drawDiv")
+	var y = document.getElementById("mainDiv");
+	var x = document.getElementById("drawDiv")
     if (x.style.display === "none") {
-        x.style.display = "block";
+		y.style.display = "none"
+		x.style.display = "block";
     } else {
-		y.style.display = "block";
 		x.style.display = "none";
+		y.style.display = "block";
 		
 	}
 	
 }
 		//test
-		$("#joinButton").click(function(){
+		$("#changeButton").click(function(){
 			myFunction();
 		})
 </script>
