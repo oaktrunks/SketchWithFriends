@@ -62,6 +62,14 @@ var transitions = 0;
 		my_request("POST", url, data, register_success, register_failure);
 	})
 
+	//Join Button
+	$("#joinButton").click(function() {
+		var gameCode = document.getElementById("gameCode").value;
+		var alias = document.getElementById("alias").value;
+		console.log(gameCode);
+		console.log(alias);
+	})
+
 	//clears the canvas and empties the stored lines array
 	$("#resetButton").click(function(){
 		//console.log(lines)
