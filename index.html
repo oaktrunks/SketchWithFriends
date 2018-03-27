@@ -57,16 +57,12 @@
 		}
 		
 		var x = document.getElementById("drawDiv");
-		x.style.display = "none";
+		//x.style.display = "none";
+		x.style.visibility = "hidden";
+		//Reeally hacky fix, style.display broke our canvas somehow
+		//Setting it to being hidden could cause problems in the future
+		//But it fixes our current iteration
 	};
-
-	$(test)
-	function neh() {
-		var x = document.getElementById("drawDiv");
-		x.style.display = "none";
-		reload("drawingBoard");
-	};
-
 
 </script>
 </body>

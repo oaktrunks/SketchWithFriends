@@ -1,11 +1,7 @@
 var path;
 var lines = [];
 
-	// var textItem = new PointText({
-	// 	content: 'Click and drag to draw a line.',
-	// 	point: new Point(20, 30),
-	// 	fillColor: 'black',
-	// });
+var transitions = 0;
 	
 	function onMouseDown(event) {
 		// If we produced a path before, deselect it:
@@ -26,26 +22,14 @@ var lines = [];
 	// at the position of the mouse:
 	function onMouseDrag(event) {
 		path.add(event.point);
-	
-		// Update the content of the text item to show how many
-		// segments it has:
-		//textItem.content = 'Segment count: ' + path.segments.length;
 	}
-	
+
 	// When the mouse is released, we simplify the path:
 	function onMouseUp(event) {
 		var segmentCount = path.segments.length;
 	
 		// When the mouse is released, simplify it:
 		path.simplify(2.5);
-        
-        //Logging pathData
-        //console.log(path.pathData)
-
-        //Testing line recreation from pathData string
-        // var cornerArrow = "M601.54688,25c15.39235,0 30.81206,-2 46,-2c1.88116,0 12.51083,-1.48917 14,0c1.50681,1.50681 0,10.85453 0,13c0,13.66667 0,27.33333 0,41"
-        // var recreatedPath = new Path(cornerArrow);
-        // recreatedPath.strokeColor = 'black';
 
         //Pushing newly created path object onto lines array
         lines.push(path);
@@ -53,11 +37,7 @@ var lines = [];
 
         // Select the path, so we can see its segments:
 		//path.fullySelected = true;
-	
-		//var newSegmentCount = path.segments.length;
-		//var difference = segmentCount - newSegmentCount;
-		//var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
-		//textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
+
 	}
 	
 
@@ -130,7 +110,6 @@ var lines = [];
 			"alias": "testing",
 		};
 
-
 		//On success, recreates the drawing
 		function register_success(response) {
 			console.log("paths:")
@@ -179,29 +158,28 @@ var lines = [];
 		}
 	});
 
-	function myFunction() {
+	function testTransition() {
+		console.log("transitions:", transitions)
 		var y = document.getElementById("mainDiv");
-		var x = document.getElementById("drawDiv")
+		var x = document.getElementById("drawDiv");
+		if (transitions == 0){
+			console.log("first transition")
+			x.style.display = "none"
+			x.style.visibility = "visible"
+		}
 		if (x.style.display === "none") {
+			console.log("turning x on")
 			y.style.display = "none"
-			x.style.display = "block";
+			x.style.display = "inline";
 		} else {
+			console.log("turning y on")
 			x.style.display = "none";
-			y.style.display = "block";
+			y.style.display = "inline";
 			
 		}
-		reloadStylesheets();
+		transitions += 1;
 	}
 	//test
 	$("#changeButton").click(function(){
-		myFunction();
+		testTransition();
 	})
-	
-
-	//https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window
-	// function reloadStylesheets() {
-	// 	var queryString = '?reload=' + new Date().getTime();
-	// 	$('link[rel="stylesheet"]').each(function () {
-	// 		this.href = this.href.replace(/\?.*|$/, queryString);
-	// 	});
-	// }
