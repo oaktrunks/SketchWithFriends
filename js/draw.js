@@ -113,8 +113,8 @@ var transitions = 0;
 		//On success, recreates the drawing
 		function register_success(response) {
 			console.log("paths:")
-			console.log(JSON.parse(response))
-			paths = JSON.parse(response)
+			console.log(response)
+			paths = JSON.parse(response["paths"])
 
 			//Iterate through array
 			//and create the paths
