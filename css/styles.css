@@ -37,7 +37,6 @@
 }
 
 .buttonReset {
-    background-color: lightgreen;
     font-size: 24px;
     width: 150%;   
 }
@@ -52,6 +51,7 @@
 }
 
 .buttonJoin{
+    background-color: lightgreen;
     /* position: absolute; */
     /* top: 50%; */
     width: 35%;
@@ -78,7 +78,7 @@ html,
 		padding: 0;
     	margin: auto;
   		display: block;
-    	position: absolute;
+    	position: relative;
     	top: 0;
     	bottom: 0;
     	left: 0;

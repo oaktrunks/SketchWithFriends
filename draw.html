@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sketch With Friends!</title>
+	<!-- Load JQuery Library --> <!-- TODO change link to local file -->
+	<script type="text/javascript" src="js/jquery-latest.min.js"></script>
+
+	<!-- Load the Paper.js library -->
+	<script type="text/javascript" src="js/paper.js"></script>
+
+	<!-- Define inlined PaperScript associate it with myCanvas -->
+	<script type="text/paperscript" src="js/draw.js" canvas="drawingBoard"></script>
+	<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+	<button id= "test" style="font-size: 56px; width: 100%;">test</button>
+	<div class="containerAbove">
+		<button id= "resetButton" class="button buttonReset">Reset</button>
+	</div>
+	<canvas id="drawingBoard" resize="true"></canvas>
+	<div class="containerBelow">
+		<button id= "sendButton" class="button buttonSend">Send</button>
+	</div>
+</body>
+</html>
+
+<script>
+$(setCanvasForDevice)
+//Detect the type of device being used
+function isMobileDevice() {
+return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+//set the canvas size IF the device is not a mobile device
+function setCanvasForDevice() {
+	if (isMobileDevice() == false){
+		document.getElementById('drawingBoard').style.width = '50%';
+		document.getElementById('drawingBoard').style.height = '75%';
+	}
+};
+
+</script>
