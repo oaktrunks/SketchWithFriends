@@ -59,7 +59,11 @@
 
 html,
 	body {
-        background-color: coral;
+        background-color:  coral;
+        background-image: url(/images/logo1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 50%;
 		margin: 0;
 		overflow: hidden;
 		height: 100%;
