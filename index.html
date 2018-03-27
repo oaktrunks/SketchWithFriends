@@ -33,7 +33,7 @@
 		<button id= "joinButton" class="button buttonJoin">Join a Game</button>
 	</div>
 </div>
-<div id="drawDiv" style="height:100%; display:none;">
+<div id="drawDiv" style="height:100%;">
 	<button id= "test" style="font-size: 56px; width: 100%;">test</button>
 	<div class="containerAbove">
 		<button id= "resetButton" class="button buttonReset">Reset</button>
@@ -43,9 +43,6 @@
 		<button id= "sendButton" class="button buttonSend">Send</button>
 	</div>
 </div>
-</body>
-
-
 <script>
 	$(setCanvasForDevice)
 	//Detect the type of device being used
@@ -58,27 +55,22 @@
 			document.getElementById('drawingBoard').style.width = '50%';
 			document.getElementById('drawingBoard').style.height = '75%';
 		}
-
+		
 		var x = document.getElementById("drawDiv");
-		//x.style.display = "none";
+		x.style.display = "none";
 	};
 
-	function myFunction() {
-	var y = document.getElementById("mainDiv");
-	var x = document.getElementById("drawDiv")
-    if (x.style.display === "none") {
-		y.style.display = "none"
-		x.style.display = "block";
-    } else {
+	$(test)
+	function neh() {
+		var x = document.getElementById("drawDiv");
 		x.style.display = "none";
-		y.style.display = "block";
-		
-	}
-	
-}
-		//test
-		$("#changeButton").click(function(){
-			myFunction();
-		})
+		reload("drawingBoard");
+	};
+
+
 </script>
+</body>
+
+
+
 </html>

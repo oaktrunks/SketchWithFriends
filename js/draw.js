@@ -63,6 +63,7 @@ var lines = [];
 
 	//Send button
 	$("#sendButton").click(function() {
+
 		url = "http://testing.sketchwithfriends.cool:5000/sendDrawing"
 
 		data = {
@@ -177,4 +178,30 @@ var lines = [];
 			createGameCode();
 		}
 	});
+
+	function myFunction() {
+		var y = document.getElementById("mainDiv");
+		var x = document.getElementById("drawDiv")
+		if (x.style.display === "none") {
+			y.style.display = "none"
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+			y.style.display = "block";
+			
+		}
+		reloadStylesheets();
+	}
+	//test
+	$("#changeButton").click(function(){
+		myFunction();
+	})
 	
+
+	//https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window
+	// function reloadStylesheets() {
+	// 	var queryString = '?reload=' + new Date().getTime();
+	// 	$('link[rel="stylesheet"]').each(function () {
+	// 		this.href = this.href.replace(/\?.*|$/, queryString);
+	// 	});
+	// }
