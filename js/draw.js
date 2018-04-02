@@ -44,7 +44,7 @@ var transitions = 0;
 	//Send button
 	$("#sendButton").click(function() {
 
-		url = "http://testing.sketchwithfriends.cool:5000/sendDrawing"
+		url = "http://sketchwithfriends.cool:5000/sendDrawing"
 
 		data = {
 			"gamecode": "testing",
@@ -111,7 +111,7 @@ var transitions = 0;
 	}
 
 	function recreateDrawing(gamecode, alias){
-		url = "http://testing.sketchwithfriends.cool:5000/getDrawing"
+		url = "http://sketchwithfriends.cool:5000/getDrawing"
 
 		data = {
 			"gamecode": "testing",
@@ -141,7 +141,7 @@ var transitions = 0;
 	}
 
 	function createGameCode(){
-		url = "http://testing.sketchwithfriends.cool:5000/createGame"
+		url = "http://sketchwithfriends.cool:5000/createGame"
 
 		//On success, stores gamecode and changes screens
 		function register_success(response) {
