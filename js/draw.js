@@ -103,6 +103,7 @@ var transitions = 0;
 		//createGame function handles everything
 		createGame();
 
+
 	})
 
 	//clears the canvas and empties the stored lines array
@@ -135,7 +136,7 @@ var transitions = 0;
 	function reload(id){
 		var container = document.getElementById(id);
 		var content = container.innerHTML;
-		container.innerHTML= content; 	
+		container.innerHTML = content; 	
 	   //this line is to watch the result in console , you can remove it later	
 		console.log(id); 
 	}
@@ -162,6 +163,7 @@ var transitions = 0;
 
 		//On success, recreates the drawing
 		function register_success(response) {
+			
 			console.log("paths:")
 			console.log(response)
 			paths = JSON.parse(response["paths"])
@@ -191,12 +193,12 @@ var transitions = 0;
 			
 			//Receive gamecode
 			gamecode = response["gamecode"]
-			
+			document.getElementById("displayCode").innerHTML = "Game Code: " + response["gamecode"];
 			//Transfer screens to host screen
 			var mainDiv = document.getElementById("mainDiv");
 			var drawDiv = document.getElementById("drawDiv");
 			var sendButton = document.getElementById("sendButton");
-			var resetButton = document.getElementById("resetButton");
+			var resetButton = document.getElementById("resetButton");	
 			mainDiv.style.display = "none"
 			drawDiv.style.visibility = "visible"
 			mainDiv.style.display = "none"
@@ -219,6 +221,7 @@ var transitions = 0;
 			console.log("generating gamecode")
 			//Check if gamecode generation is going alright
 			createGame();
+			
 		}
 	});
 

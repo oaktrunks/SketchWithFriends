@@ -9,7 +9,11 @@
     position: absolute;
 
 }
-
+.code{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
 .buttonWrapper{
     position: relative;
     text-align: center;
