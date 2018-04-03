@@ -36,7 +36,7 @@ def sendDrawing():
     document = {}
     document['alias'] = request.form['alias']
     document['paths'] = request.form['paths']
-    document['number'] = db[gamecode].find().count() + 1
+    document['number'] = db[gamecode].find().count()
 
     #Insert document into MongoDB
     result = db[gamecode].insert_one(document)
