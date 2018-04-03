@@ -57,12 +57,26 @@ var transitions = 0;
 
 		function register_success(response) {
 			console.log(response);
+			while (lines.length > 0){
+				lines.pop();
+			}
+			//from https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js/19293586
+			paper.project.activeLayer.removeChildren();
+			paper.view.draw();
+			
 		}
 		function register_failure(response) {
 			console.log(response);
+			while (lines.length > 0){
+				lines.pop();
+			}
+			//from https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js/19293586
+			paper.project.activeLayer.removeChildren();
+			paper.view.draw();
 		}
 
 		my_request("POST", url, data, register_success, register_failure);
+
 	})
 
 	//Join Button
