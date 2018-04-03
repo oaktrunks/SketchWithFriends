@@ -1,5 +1,7 @@
 var path;
 var lines = [];
+var gameCode = "none"
+var alias = false
 
 var transitions = 0;
 	
@@ -64,10 +66,43 @@ var transitions = 0;
 
 	//Join Button
 	$("#joinButton").click(function() {
-		var gameCode = document.getElementById("gameCode").value;
-		var alias = document.getElementById("alias").value;
+		gameCode = document.getElementById("gameCode").value;
+		alias = document.getElementById("alias").value;
 		console.log(gameCode);
 		console.log(alias);
+
+		//TODO
+		//Check if gamecode is valid
+		if(!checkCodeValidity(gameCode)){
+			gameCode = "none"
+		}
+
+		//Join game
+		//TODO verification, security
+
+		//Display some error if gamecode is invalid
+		if(gameCode == "none"){
+			//TODO
+			//Do something
+		}
+		//Transition the screen
+		else{
+			var mainDiv = document.getElementById("mainDiv");
+			var drawDiv = document.getElementById("drawDiv");
+			var cycleButton = document.getElementById("cycleButton");
+			mainDiv.style.display = "none"
+			drawDiv.style.visibility = "visible"
+			mainDiv.style.display = "none"
+			drawDiv.style.display = "inline";
+			cycleButton.style.display = "none";
+		}
+	})
+
+	//Host button
+	$("#hostButton").click(function() {
+		//createGame function handles everything
+		createGame();
+
 	})
 
 	//clears the canvas and empties the stored lines array
@@ -83,11 +118,18 @@ var transitions = 0;
 		//console.log(lines)
 	})
 
-		//test
-		$("#test").click(function(){
-			recreateDrawing("testing", "testing")
-		})
+	//test
+	$("#test").click(function(){
+		recreateDrawing("testing", "testing")
+	})
 
+	//Checks if gamecode is valid
+	//Gamecode in mongoDB, game not in progress
+	function checkCodeValidity(gameCode){
+		//TODO
+		//request something from API checking if gamecode is a collection in mongoDB
+		return true
+	}
 
 	//reloads the DOM by element ID, may be useful later
 	function reload(id){
@@ -140,13 +182,27 @@ var transitions = 0;
 		my_request("POST", url, data, register_success, register_failure);
 	}
 
-	function createGameCode(){
+	function createGame(){
 		url = "http://sketchwithfriends.cool:5000/createGame"
 
 		//On success, stores gamecode and changes screens
 		function register_success(response) {
 			console.log("gamecode:", response["gamecode"])
+			
+			//Receive gamecode
 			gamecode = response["gamecode"]
+			
+			//Transfer screens to host screen
+			var mainDiv = document.getElementById("mainDiv");
+			var drawDiv = document.getElementById("drawDiv");
+			var sendButton = document.getElementById("sendButton");
+			var resetButton = document.getElementById("resetButton");
+			mainDiv.style.display = "none"
+			drawDiv.style.visibility = "visible"
+			mainDiv.style.display = "none"
+			drawDiv.style.display = "inline";
+			sendButton.style.display = "none"
+			resetButton.style.display = "none"
 		}
 
 		function register_failure(response) {
@@ -162,7 +218,7 @@ var transitions = 0;
 			
 			console.log("generating gamecode")
 			//Check if gamecode generation is going alright
-			createGameCode();
+			createGame();
 		}
 	});
 
@@ -183,7 +239,6 @@ var transitions = 0;
 			console.log("turning y on")
 			x.style.display = "none";
 			y.style.display = "inline";
-			
 		}
 		transitions += 1;
 	}
