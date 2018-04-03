@@ -85,15 +85,15 @@ def getDrawing():
     print(number)
 
     try:
-        paths = db[gamecode].find_one({'number': number})['paths']
+        result = db[gamecode].find_one({'number': number})
     except:
         return jsonify({"success":False,"error":"API error when retrieving drawing"}) 
 
     #return paths
-    if paths is None:
+    if result is None:
         return jsonify({"success":False,"error":"API error when retrieving drawing"})
     else:
-        return jsonify({"success":True,"paths":paths}) 
+        return jsonify({"success":True,"paths":result['paths'], "canvasWidth":result['canvasWidth'], "canvasHeight":result['canvasHeight']}) 
 
 @app.route('/createGame', methods=['GET'])
 def createGame():
