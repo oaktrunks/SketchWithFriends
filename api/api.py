@@ -76,7 +76,7 @@ def getDrawing():
     try:
         paths = db[gamecode].find_one({'number': 1})['paths']
     except:
-        return jsonify({"success":True,"paths":paths}) 
+        return jsonify({"success":False,"error":"API error when retrieving drawing"}) 
 
     #return paths
     if paths is None:
