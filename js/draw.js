@@ -116,7 +116,7 @@ var transitions = 0;
 		//currentDrawing global variable holds number of
 		// which drawing is currently showing
 
-		currentDrawing +=1;
+		currentDrawing += 1;
 		recreateDrawing(gameCode, currentDrawing)
 
 	})
