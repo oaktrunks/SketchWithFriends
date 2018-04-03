@@ -49,10 +49,14 @@ var transitions = 0;
 
 		url = "http://sketchwithfriends.cool:5000/sendDrawing"
 
+		canvas = document.getElementById("drawingBoard");
+
 		data = {
 			"gamecode": gameCode,
 			"alias": alias,
-			"paths": JSON.stringify(lines)
+			"paths": JSON.stringify(lines),
+			"cavasWidth": canvas.style.width,
+			"canvasHeight": canvas.style.height,
 		};
 
 		function register_success(response) {
@@ -211,11 +215,35 @@ var transitions = 0;
 				console.log(response)
 				paths = JSON.parse(response["paths"])
 
+				//Used for scaling
+				drawingWidth = response["canvasWidth"]
+				drawingHeight= response["canvasHeight"]
+				canvas = document.getElementById("drawingBoard");
+				canvasWidth = canvas.style.width
+				canvasHeight = canvas.style.height
+
+				//segments = (48) [Array(3), Array(3), Array(3), Array(3), etc]
+				// array(3) = [Array(2), Array(2), Array(2)]
 				//Iterate through array
-				//and create the paths
+				//and recreate the paths
 				for (var i = 0; i < paths.length; i++) {
+					drawingSegments = paths[i][1]['segments']
+					//Debug
+					console.log("segments: ",drawingSegments)
+
+					//Scale the drawing to our current canas
+					for(var j = 0; j < drawingSegments.length; j++){
+						for(var k = 0; k < drawingSegments[j].length, k++){
+							//Width based
+							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingWidth * canvasWidth
+							//Height based
+							drawingSegments[j][k][1] = drawingSegments[j][k][1] / drawingHeight * canvasHeight
+						}
+					}
+
+					//Initialze the new line
 					new Path({
-						segments: paths[i][1]['segments'],
+						segments: drawingSegments,
 						strokeColor: paths[i][1]['strokeColor'],
 					});
 				}
