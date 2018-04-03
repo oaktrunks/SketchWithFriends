@@ -55,8 +55,8 @@ var transitions = 0;
 			"gamecode": gameCode,
 			"alias": alias,
 			"paths": JSON.stringify(lines),
-			"cavasWidth": canvas.style.width,
-			"canvasHeight": canvas.style.height,
+			"canvasWidth": canvas.width,
+			"canvasHeight": canvas.height,
 		};
 		console.log("sending drawing:",data)
 
@@ -220,8 +220,8 @@ var transitions = 0;
 				drawingWidth = response["canvasWidth"]
 				drawingHeight= response["canvasHeight"]
 				canvas = document.getElementById("drawingBoard");
-				canvasWidth = canvas.style.width
-				canvasHeight = canvas.style.height
+				canvasWidth = canvas.width
+				canvasHeight = canvas.height
 
 				//segments = (48) [Array(3), Array(3), Array(3), Array(3), etc]
 				// array(3) = [Array(2), Array(2), Array(2)]
@@ -236,9 +236,13 @@ var transitions = 0;
 					for(var j = 0; j < drawingSegments.length; j++){
 						for(var k = 0; k < drawingSegments[j].length; k++){
 							//Width based
+							console.log("calc")
+							console.log("drawingSegments[j][k][0] = ", drawingSegments[j][k][0] ," / ", drawingWidth," * ",canvasWidth)
 							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingWidth * canvasWidth
+							console.log("ans0 = ",drawingSegments[j][k][0])
 							//Height based
 							drawingSegments[j][k][1] = drawingSegments[j][k][1] / drawingHeight * canvasHeight
+							console.log("ans1 = ",drawingSegments[j][k][1])
 						}
 					}
 
