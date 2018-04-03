@@ -50,8 +50,8 @@ var transitions = 0;
 		url = "http://sketchwithfriends.cool:5000/sendDrawing"
 
 		data = {
-			"gamecode": "testing",
-			"alias": "testing",
+			"gamecode": gameCode,
+			"alias": alias,
 			"paths": JSON.stringify(lines)
 		};
 
