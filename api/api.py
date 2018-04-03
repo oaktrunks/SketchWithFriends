@@ -28,6 +28,8 @@ def sendDrawing():
         gamecode
         alias
         paths - JSON data of an array of paperJS paths
+        canvasWidth
+        canvasHeight
     --------------------------------------------
     """
     gamecode = request.form['gamecode']
@@ -36,6 +38,8 @@ def sendDrawing():
     document = {}
     document['alias'] = request.form['alias']
     document['paths'] = request.form['paths']
+    document['canvasWidth'] = request.form['canvasWidth']
+    document['canvasHeight'] = request.form['canvasHeight']
     document['number'] = db[gamecode].find().count()
 
     #Insert document into MongoDB
