@@ -19,8 +19,8 @@
     position: absolute;
     z-index: 100;
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 75px;
+    height: 75px;
     background-image: url(/images/logo1.png);
     background-position: 0 0;
     background-repeat: no-repeat;

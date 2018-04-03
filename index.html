@@ -14,7 +14,7 @@
 </head>
 <body>
 <div style="height:0%">
-	<img src="images/logo1.png" class="logoBoi"></img>
+	<img id="logo" src="images/logo1.png" class="logoBoi"></img>
 </div>
 <!-- <button id= "changeButton" class="button buttonChange">Change Screen</button> -->
 <div id="mainDiv" style="height:100%">
@@ -58,6 +58,8 @@
 		if (isMobileDevice() == false){
 			document.getElementById('drawingBoard').style.width = '50%';
 			document.getElementById('drawingBoard').style.height = '75%';
+			document.getElementById('logo').style.width = '150px';
+			document.getElementById('logo').style.height = '150px';
 		}
 		
 		var x = document.getElementById("drawDiv");
