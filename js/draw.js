@@ -2,6 +2,7 @@ var path;
 var lines = [];
 var gameCode = "none"
 var alias = false
+var currentDrawing = 0
 
 var transitions = 0;
 	
@@ -105,6 +106,21 @@ var transitions = 0;
 
 	})
 
+	//Next Picture button
+	// This will eventually be removed
+	//  is only in here for our April 3 presentation
+	$("#cycleButton").click(function() {
+		//Cycles through stored drawings in our database
+		//Uses the global gameCode variable to check mongo collection with same name
+		
+		//currentDrawing global variable holds number of
+		// which drawing is currently showing
+
+		currentDrawing +=1;
+		recreateDrawing(gameCode, currentDrawing)
+
+	})
+
 	//clears the canvas and empties the stored lines array
 	$("#resetButton").click(function(){
 		//console.log(lines)
@@ -152,13 +168,21 @@ var transitions = 0;
 		jqxhr.fail(failureHandler);
 	}
 
-	function recreateDrawing(gamecode, alias){
+	function recreateDrawing(gamecode, number){
 		url = "http://sketchwithfriends.cool:5000/getDrawing"
 
 		data = {
-			"gamecode": "testing",
-			"alias": "testing",
+			"gamecode": gamecode,
+			"number": number,
 		};
+
+		//Wipes previous drawing, code from resetButton
+		while (lines.length > 0){
+			lines.pop();
+		}
+		//from https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js/19293586
+		paper.project.activeLayer.removeChildren();
+		paper.view.draw();
 
 		//On success, recreates the drawing
 		function register_success(response) {
