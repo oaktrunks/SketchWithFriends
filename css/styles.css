@@ -10,6 +10,19 @@
 
 }
 
+.logoBoi{
+    display: block;
+    width: 120px;
+    height: 31px;
+    background-image: url(/images/logo1.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.logoBoi a:hover {
+    background-position: 0 -31px;
+}
+
 .buttonWrapper{
     position: relative;
     text-align: center;
