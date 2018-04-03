@@ -75,7 +75,7 @@ def getDrawing():
 
     try:
         paths = db[gamecode].find_one({'number': 1})['paths']
-    except():
+    except:
         return jsonify({"success":True,"paths":paths}) 
 
     #return paths
