@@ -36,7 +36,7 @@ def sendDrawing():
     document = {}
     document['alias'] = request.form['alias']
     document['paths'] = request.form['paths']
-    document['number'] = db[gamecode].find().count() + 1
+    document['number'] = db[gamecode].find().count()
 
     #Insert document into MongoDB
     result = db[gamecode].insert_one(document)
@@ -68,11 +68,15 @@ def getDrawing():
     --------------------------------------------
     """
     gamecode = request.form['gamecode']
-    number = int(request.form['number'])
-    print(type(number))
-    number = number % (db[gamecode].find().count() + 1)
+    #number = int(request.form['number'])
+    #number = 1
+    #print(type(number))
+    #number = number % (db[gamecode].find().count() + 1)
 
-    paths = db[gamecode].find_one({'number': number})['paths']
+    try:
+        paths = db[gamecode].find_one({'number': 1})['paths']
+    except():
+        return jsonify({"success":True,"paths":paths}) 
 
     #return paths
     if paths is None:
