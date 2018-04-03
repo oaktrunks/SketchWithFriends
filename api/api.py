@@ -71,7 +71,7 @@ def getDrawing():
     number = int(request.form['number'])
     #number = 1
     #print(type(number))
-    number = number % (db[gamecode].find().count() + 1)
+    number = number % (db[gamecode].find().count() - 1)
 
     try:
         paths = db[gamecode].find_one({'number': number})['paths']
