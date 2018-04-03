@@ -73,6 +73,8 @@ def getDrawing():
     #print(type(number))
     number = number % (db[gamecode].find().count() - 1)
 
+    print(number)
+    
     try:
         paths = db[gamecode].find_one({'number': number})['paths']
     except:
