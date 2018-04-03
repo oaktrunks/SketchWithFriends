@@ -9,11 +9,28 @@
     position: absolute;
 
 }
+<<<<<<< HEAD
 .code{
     font-size: 32px;
     font-weight: bold;
     text-align: center;
 }
+=======
+
+.logoBoi{
+    display: block;
+    width: 120px;
+    height: 31px;
+    background-image: url(/images/logo1.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.logoBoi a:hover {
+    background-position: 0 -31px;
+}
+
+>>>>>>> 6a76bad021889bfc114a4f3209dca29786fd2345
 .buttonWrapper{
     position: relative;
     text-align: center;
