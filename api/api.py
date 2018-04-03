@@ -69,11 +69,11 @@ def getDrawing():
     """
     gamecode = request.form['gamecode']
     #number = int(request.form['number'])
-    number = 1
-    print(type(number))
+    #number = 1
+    #print(type(number))
     #number = number % (db[gamecode].find().count() + 1)
 
-    paths = db[gamecode].find_one({'number': number})['paths']
+    paths = db[gamecode].find_one({'number': 1})['paths']
 
     #return paths
     if paths is None:
