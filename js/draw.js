@@ -177,7 +177,7 @@ var transitions = 0;
 		};
 
 		console.log(data)
-		
+
 		//Wipes previous drawing, code from resetButton
 		while (lines.length > 0){
 			lines.pop();
@@ -218,6 +218,7 @@ var transitions = 0;
 			//Receive gamecode
 			gamecode = response["gamecode"]
 			document.getElementById("code").innerHTML = "Game Code: " + response["gamecode"];	
+
 			//Transfer screens to host screen
 			var mainDiv = document.getElementById("mainDiv");
 			var drawDiv = document.getElementById("drawDiv");
