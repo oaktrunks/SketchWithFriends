@@ -58,6 +58,7 @@ var transitions = 0;
 			"cavasWidth": canvas.style.width,
 			"canvasHeight": canvas.style.height,
 		};
+		console.log("sending drawing:",data)
 
 		function register_success(response) {
 			console.log(response);

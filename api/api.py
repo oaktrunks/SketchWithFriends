@@ -42,6 +42,9 @@ def sendDrawing():
     document['canvasHeight'] = request.form['canvasHeight']
     document['number'] = db[gamecode].find().count()
 
+    print("received drawing")
+    print(document)
+    
     #Insert document into MongoDB
     result = db[gamecode].insert_one(document)
     print(result)
