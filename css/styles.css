@@ -15,16 +15,14 @@
     font-weight: bold;
 }
 .logoBoi{
+    position: absolute;
     display: block;
-    width: 120px;
-    height: 31px;
+    width: 150px;
+    height: 150px;
     background-image: url(/images/logo1.png);
     background-position: 0 0;
     background-repeat: no-repeat;
-}
-
-.logoBoi a:hover {
-    background-position: 0 -31px;
+    z-index: 10;
 }
 
 .buttonWrapper{
@@ -77,10 +75,10 @@
 html,
 	body {
         background-color:  coral;
-        /* background-image: url(/images/logo1.png);
+        background-image: url(/images/SoSmooth.jpg);
         background-position: center;
-        background-repeat: no-repeat;
-        background-size: 50%; */
+        background-repeat: repeat;
+        background-size: 50%;
 		margin: 0;
 		overflow: hidden;
 		height: 100%;
