@@ -6,8 +6,9 @@
 }
 
 .containerAbove{
-    position: absolute;
-
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
 }
 .code{
     font-size: 32px;
@@ -16,13 +17,13 @@
 }
 .logoBoi{
     position: absolute;
+    z-index: 100;
     display: block;
     width: 150px;
     height: 150px;
     background-image: url(/images/logo1.png);
     background-position: 0 0;
     background-repeat: no-repeat;
-    z-index: 10;
 }
 
 .buttonWrapper{
@@ -53,7 +54,7 @@
 
 .buttonReset {
     font-size: 24px;
-    width: 150%;   
+    width: 150%;
 }
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
