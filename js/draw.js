@@ -233,7 +233,7 @@ var transitions = 0;
 
 					//Scale the drawing to our current canas
 					for(var j = 0; j < drawingSegments.length; j++){
-						for(var k = 0; k < drawingSegments[j].length, k++){
+						for(var k = 0; k < drawingSegments[j].length; k++){
 							//Width based
 							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingWidth * canvasWidth
 							//Height based
