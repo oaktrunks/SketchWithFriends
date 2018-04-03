@@ -203,7 +203,7 @@ var transitions = 0;
 		}
 		function register_failure(response) {
 			console.log(response);
-			currentDrawing -= 1;
+			currentDrawing -= 2;
 		}
 
 		my_request("POST", url, data, register_success, register_failure);
