@@ -73,7 +73,10 @@ def getDrawing():
     #print(type(number))
     #number = number % (db[gamecode].find().count() + 1)
 
-    paths = db[gamecode].find_one({'number': 1})['paths']
+    try:
+        paths = db[gamecode].find_one({'number': 1})['paths']
+    except():
+        return jsonify({"success":True,"paths":paths}) 
 
     #return paths
     if paths is None:
