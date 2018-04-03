@@ -68,7 +68,7 @@ def getDrawing():
     --------------------------------------------
     """
     gamecode = request.form['gamecode']
-    number = request.form['number']
+    number = int(request.form['number'])
     print(type(number))
     number = number % (db[gamecode].find().count() + 1)
 
