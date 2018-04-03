@@ -216,8 +216,9 @@ var transitions = 0;
 			console.log("gamecode:", response["gamecode"])
 			
 			//Receive gamecode
-			gameCode = response["gamecode"]
-			
+			gamecode = response["gamecode"]
+			document.getElementById("code").innerHTML = "Game Code: " + response["gamecode"];	
+
 			//Transfer screens to host screen
 			var mainDiv = document.getElementById("mainDiv");
 			var drawDiv = document.getElementById("drawDiv");

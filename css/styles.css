@@ -9,6 +9,21 @@
     position: absolute;
 
 }
+.code{
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+}
+.logoBoi{
+    position: absolute;
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-image: url(/images/logo1.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
 
 .buttonWrapper{
     position: relative;
@@ -60,9 +75,9 @@
 html,
 	body {
         background-color:  coral;
-        background-image: url(/images/logo1.png);
+        background-image: url(/images/SoSmooth.jpg);
         background-position: center;
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: 50%;
 		margin: 0;
 		overflow: hidden;
