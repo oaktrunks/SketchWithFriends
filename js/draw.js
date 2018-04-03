@@ -188,22 +188,28 @@ var transitions = 0;
 
 		//On success, recreates the drawing
 		function register_success(response) {
-			console.log("paths:")
-			console.log(response)
-			paths = JSON.parse(response["paths"])
+			if (!response["success"]){
+				console.log("decrementing currentdrawing")
+				currentDrawing -= 1;
+			}
+			else{
+				console.log("paths:")
+				console.log(response)
+				paths = JSON.parse(response["paths"])
 
-			//Iterate through array
-			//and create the paths
-			for (var i = 0; i < paths.length; i++) {
-				new Path({
-					segments: paths[i][1]['segments'],
-					strokeColor: paths[i][1]['strokeColor'],
-				});
+				//Iterate through array
+				//and create the paths
+				for (var i = 0; i < paths.length; i++) {
+					new Path({
+						segments: paths[i][1]['segments'],
+						strokeColor: paths[i][1]['strokeColor'],
+					});
+				}
 			}
 		}
 		function register_failure(response) {
 			console.log(response);
-			currentDrawing -= 2;
+			currentDrawing -= 1;
 		}
 
 		my_request("POST", url, data, register_success, register_failure);
