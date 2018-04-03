@@ -176,6 +176,8 @@ var transitions = 0;
 			"number": number,
 		};
 
+		console.log(data)
+		
 		//Wipes previous drawing, code from resetButton
 		while (lines.length > 0){
 			lines.pop();
