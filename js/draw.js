@@ -178,7 +178,7 @@ var transitions = 0;
 			}
 		}
 		function register_failure(response) {
-			errorDialogue("Could not reach server with request.\n");
+			errorDialogue("\nCould not reach server with request.\n");
 			//throw some error message
 			return false;
 		}
@@ -343,7 +343,7 @@ var transitions = 0;
 	});
 
 	function errorDialogue(msg){
-		alert("Error: " + msg);
+		alert("Error: \n" + msg);
 		return true;
 	}
 	function testTransition() {
