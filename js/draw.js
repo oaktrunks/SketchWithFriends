@@ -95,32 +95,17 @@ var transitions = 0;
 			errorMsg += "Please enter a Game Code.\n"
 			readyToJoin = false;
 		}
-		else{
-			//Check if gamecode is valid
-			if(!checkCodeValidity(gameCode)){
-				errorMsg += "Game Code Invalid!\n"
-				readyToJoin = false;
-			}
-		}
 		if (alias == ""){
 			errorMsg += "Please enter an Alias.\n"
 			readyToJoin = false;
 		}
-
 		//Display some error if gamecode is invalid
 		if(!readyToJoin){
 			errorDialogue(errorMsg);
 		}
-		//Transition the screen
+		//If fields are okay, pass work off to joinGame function
 		else{
-			var mainDiv = document.getElementById("mainDiv");
-			var drawDiv = document.getElementById("drawDiv");
-			var cycleButton = document.getElementById("cycleButton");
-			mainDiv.style.display = "none"
-			drawDiv.style.visibility = "visible"
-			mainDiv.style.display = "none"
-			drawDiv.style.display = "inline";
-			cycleButton.style.display = "none";
+			joinGame(gameCode)
 		}
 	})
 
@@ -166,7 +151,7 @@ var transitions = 0;
 
 	//Checks if gamecode is valid
 	//Gamecode in mongoDB, game not in progress
-	function checkCodeValidity(gameCode){
+	function joinGame(gameCode){
 		url = "http://sketchwithfriends.cool:5000/joinGame";
 		data = {"gamecode" : gameCode};
 		console.log(data);
@@ -174,14 +159,27 @@ var transitions = 0;
 			if (!response["success"]){
 				console.log("invalid game code");
 				console.log(response)
+
+				//throw some error message
+				errorDialogue(response["error"]);
 				return false;
 			}
-			else{
+			else{//everything is valid
+				//transition screens
+				var mainDiv = document.getElementById("mainDiv");
+				var drawDiv = document.getElementById("drawDiv");
+				var cycleButton = document.getElementById("cycleButton");
+				mainDiv.style.display = "none"
+				drawDiv.style.visibility = "visible"
+				mainDiv.style.display = "none"
+				drawDiv.style.display = "inline";
+				cycleButton.style.display = "none";
 				return true;
 			}
 		}
 		function register_failure(response) {
-			console.log(response);
+			errorDialogue("Could not reach server with request.\n");
+			//throw some error message
 			return false;
 		}
 		my_request("POST", url, data, register_success, register_failure);
