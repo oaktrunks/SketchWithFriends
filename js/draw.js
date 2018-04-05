@@ -327,20 +327,21 @@ var transitions = 0;
 
 		function register_failure(response) {
 			console.log(response);
+			errorDialogue("\nCould not reach server with request.\n")
 		}
 
 		my_request("GET", url, "", register_success, register_failure);
 	}
 
-    //debugging stuff
-    $(window).keypress(function(e) {
-        if (e.which === 32) { //pressing spacebar
+    // //debugging stuff
+    // $(window).keypress(function(e) {
+    //     if (e.which === 32) { //pressing spacebar
 			
-			console.log("generating gamecode")
-			//Check if gamecode generation is going alright
-			createGame();
-		}
-	});
+	// 		console.log("generating gamecode")
+	// 		//Check if gamecode generation is going alright
+	// 		createGame();
+	// 	}
+	// });
 
 	function errorDialogue(msg){
 		alert("Error: \n" + msg);
