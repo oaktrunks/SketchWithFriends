@@ -111,7 +111,7 @@ def createGame():
     gamecode = generateUniqueGamecode()
 
     #Create a blank state for game in db.gamecode collection
-    document = {"gameState":0}
+    document = {"gameState":0, "type": "gameState"}
     result = db[gamecode].insert_one(document)
 
     if result.acknowledged is True :
@@ -135,11 +135,15 @@ def joinGame():
     #Generate a random unique gamecode consisting of alphabetical characters
     gamecode = request.form['gamecode']
     print(gamecode)
-    #Create a blank state for game in db.gamecode collection
-    if gamecode in db.collection_names() and db[gamecode]["gameState"] == 0:
-        return jsonify({"success":True})
+    
+    if gamecode in db.collection_names():
+        result = gameState = db[gamecode].find_one({'type': "gameState"})
+        if result is not None:
+            return jsonify({"success":True})
+        else:
+            return jsonify({"success":False,"error":"API error when joining game, game already in progress"})
     else:
-        return jsonify({"success":False,"error":"API error when joining game"})
+        return jsonify({"success":False,"error":"API error when joining game, gamecode not in database"})
 
 #Function to be called by /createGame API route
 def generateUniqueGamecode():
