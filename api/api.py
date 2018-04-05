@@ -141,9 +141,9 @@ def joinGame():
         if result is not None:
             return jsonify({"success":True})
         else:
-            return jsonify({"success":False,"error":"API error when joining game, game already in progress"})
+            return jsonify({"success":False,"error":"Game already in progress.\n"})
     else:
-        return jsonify({"success":False,"error":"API error when joining game, gamecode not in database"})
+        return jsonify({"success":False,"error":"Game does not exist.\n"})
 
 #Function to be called by /createGame API route
 def generateUniqueGamecode():
