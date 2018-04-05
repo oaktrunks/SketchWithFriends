@@ -237,12 +237,31 @@ var transitions = 0;
 						for(var k = 0; k < drawingSegments[j].length; k++){
 							//Width based
 							console.log("calc")
-							console.log("drawingSegments[j][k][0] = ", drawingSegments[j][k][0] ," / ", drawingWidth," * ",canvasWidth)
-							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingWidth * canvasWidth
-							console.log("ans0 = ",drawingSegments[j][k][0])
-							//Height based
-							drawingSegments[j][k][1] = drawingSegments[j][k][1] / drawingHeight * canvasHeight
-							console.log("ans1 = ",drawingSegments[j][k][1])
+							//Get largest drawing pixel canvas size
+							if(drawingWidth > drawingHeight){
+								drawingDivider = drawingWidth
+							}
+							else{
+								drawingDivider = drawingHeight
+							}
+							//Get smallest host pixel canvas size
+							if(canvasWidth < canvasHeight){
+								canvasDivider = canvasWidth
+							}
+							else{
+								canvasDivider = canvasHeight
+							}
+							
+							//Scaling all the X positions
+							//console.log("drawingSegments[j][k][0] = ", drawingSegments[j][k][0] ," / ", drawingDivider," * ",canvasDivider)
+							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingDivider * canvasDivider
+							//console.log( "=", drawingSegments[j][k][0])
+							
+							//Scaling all the Y positions
+							//console.log("drawingSegments[j][k][1] = ", drawingSegments[j][k][1] ," / ", drawingDivider," * ",canvasDivider)
+							drawingSegments[j][k][1] = drawingSegments[j][k][1] / drawingDivider * canvasDivider
+							//console.log( "=", drawingSegments[j][k][1])
+							
 						}
 					}
 
