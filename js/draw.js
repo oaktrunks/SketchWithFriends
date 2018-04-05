@@ -86,24 +86,30 @@ var transitions = 0;
 
 	//Join Button
 	$("#joinButton").click(function() {
-		gameCode = document.getElementById("gameCode").value;
-		alias = document.getElementById("alias").value;
-		console.log(gameCode);
-		console.log(alias);
+		var errorMsg = "";
+		var readyToJoin = true;
+		var gameCode = document.getElementById("gameCode").value;
+		var alias = document.getElementById("alias").value;
 
-		//TODO
-		//Check if gamecode is valid
-		if(!checkCodeValidity(gameCode)){
-			gameCode = "none"
+		if (gameCode == ""){
+			errorMsg += "Please enter a Game Code.\n"
+			readyToJoin = false;
+		}
+		else{
+			//Check if gamecode is valid
+			if(!checkCodeValidity(gameCode)){
+				errorMsg += "Game Code Invalid!\n"
+				readyToJoin = false;
+			}
+		}
+		if (alias == ""){
+			errorMsg += "Please enter an Alias.\n"
+			readyToJoin = false;
 		}
 
-		//Join game
-		//TODO verification, security
-
 		//Display some error if gamecode is invalid
-		if(gameCode == "none"){
-			//TODO
-			//Do something
+		if(!readyToJoin){
+			errorDialogue(errorMsg);
 		}
 		//Transition the screen
 		else{
@@ -161,9 +167,24 @@ var transitions = 0;
 	//Checks if gamecode is valid
 	//Gamecode in mongoDB, game not in progress
 	function checkCodeValidity(gameCode){
-		//TODO
-		//request something from API checking if gamecode is a collection in mongoDB
-		return true
+		url = "http://sketchwithfriends.cool:5000/joinGame";
+		data = {"gamecode" : gameCode};
+		console.log(data);
+		function register_success(response) {
+			if (!response["success"]){
+				console.log("invalid game code");
+				console.log(response)
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		function register_failure(response) {
+			console.log(response);
+			return false;
+		}
+		my_request("POST", url, data, register_success, register_failure);
 	}
 
 	//reloads the DOM by element ID, may be useful later
@@ -174,6 +195,7 @@ var transitions = 0;
 	   //this line is to watch the result in console , you can remove it later	
 		console.log(id); 
 	}
+
 
 	function my_request(method, url, data, successHandler, failureHandler) {
 		var jqxhr = $.ajax({
@@ -322,6 +344,10 @@ var transitions = 0;
 		}
 	});
 
+	function errorDialogue(msg){
+		alert("Error: " + msg);
+		return true;
+	}
 	function testTransition() {
 		console.log("transitions:", transitions)
 		var y = document.getElementById("mainDiv");
