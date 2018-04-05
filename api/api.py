@@ -134,7 +134,7 @@ def joinGame():
     """
     #Generate a random unique gamecode consisting of alphabetical characters
     gamecode = request.form['gamecode']
-
+    print(gamecode)
     #Create a blank state for game in db.gamecode collection
     if gamecode in db.collection_names() and db[gamecode]["gameState"] == 0:
         return jsonify({"success":True})
