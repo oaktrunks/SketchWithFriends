@@ -17,7 +17,7 @@
 	<img id="logo" src="images/logo1.png" class="logoBoi"></img>
 </div>
 <!-- <button id= "changeButton" class="button buttonChange">Change Screen</button> -->
-<div id="mainDiv" style="height:100%">
+<div id="mainDiv" style="height:100%; z-index: 1;">
 	<div class="buttonWrapper" style="top: 20%;">
 		<button id= "hostButton" class="button buttonHost">Host a Game</button>
 	</div>
@@ -46,6 +46,10 @@
 		<button id= "sendButton" class="button buttonSend">Send</button>
 		<button id= "cycleButton" class="button buttonCycle">Next Picture</button>
 	</div>
+</div>
+<div id = waitingPage class = waitingPage>
+	<h3 class = "buttonWrapper">Waiting</h3>
+	<div class="spinner"></div>
 </div>
 <script>
 	$(setCanvasForDevice)
