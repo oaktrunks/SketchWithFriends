@@ -90,6 +90,8 @@ html,
     
     input {
         width: 20%;
+        text-align: center;
+        font-size: 18px;
     }
 	
 	/* Scale canvas with resize attribute to full size */
