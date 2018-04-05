@@ -135,7 +135,7 @@ def joinGame():
     #Generate a random unique gamecode consisting of alphabetical characters
     gamecode = request.form['gamecode']
     print(gamecode)
-    
+    print(db.collection_names())
     if gamecode in db.collection_names():
         result = gameState = db[gamecode].find_one({'type': "gameState"})
         if result is not None:
