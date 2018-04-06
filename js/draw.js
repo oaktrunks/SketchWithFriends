@@ -106,6 +106,7 @@ var transitions = 0;
 		//If fields are okay, pass work off to joinGame function
 		else{
 			alias = local_alias
+			console.log("calling joingame")
 			joinGame(local_gameCode)
 		}
 	})
@@ -157,7 +158,9 @@ var transitions = 0;
 		data = {"gamecode" : param_gameCode};
 		console.log(data);
 		function register_success(response) {
+			console.log("joingame request reached and called back")
 			if (!response["success"]){
+				console.log("joingame request succes = false")
 				console.log("invalid game code");
 				console.log(response)
 
@@ -167,6 +170,7 @@ var transitions = 0;
 			}
 			else{//everything is valid
 				//storeGamecode
+				console.log("joingame request succes = true")
 				console.log("setting gameCode = ", param_gameCode)
 				gameCode = param_gameCode
 				console.log("gameCode is now", gameCode)
@@ -189,6 +193,7 @@ var transitions = 0;
 			//throw some error message
 			console.log(response);
 		}
+		console.log("sending joingame request")
 		my_request("POST", url, data, register_success, register_failure);
 	}
 
