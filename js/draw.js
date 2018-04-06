@@ -151,9 +151,9 @@ var transitions = 0;
 
 	//Checks if gamecode is valid
 	//Gamecode in mongoDB, game not in progress
-	function joinGame(gameCode){
+	function joinGame(param_gameCode){
 		url = "http://sketchwithfriends.cool:5000/joinGame";
-		data = {"gamecode" : gameCode};
+		data = {"gamecode" : param_gameCode};
 		console.log(data);
 		function register_success(response) {
 			if (!response["success"]){
@@ -165,6 +165,9 @@ var transitions = 0;
 				return false;
 			}
 			else{//everything is valid
+				//storeGamecode
+				gameCode = param_gameCode
+
 				//transition screens
 				var mainDiv = document.getElementById("mainDiv");
 				var drawDiv = document.getElementById("drawDiv");

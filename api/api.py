@@ -137,11 +137,13 @@ def joinGame():
     print(gamecode)
     print(db.collection_names())
     if gamecode in db.collection_names():
-        result = gameState = db[gamecode].find_one({'type': "gameState"})
+        result = db[gamecode].find_one({'type': "gameState"})
         if result is not None:
-            return jsonify({"success":True})
-        else:
-            return jsonify({"success":False,"error":"Game already in progress.\n"})
+            gameState = result["gameState"]
+            if(gameState == 0):
+                return jsonify({"success":True})
+            else:
+                return jsonify({"success":False,"error":"Game already in progress.\n"})
     else:
         return jsonify({"success":False,"error":"Game does not exist.\n"})
 
