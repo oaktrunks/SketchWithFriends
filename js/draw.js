@@ -88,14 +88,14 @@ var transitions = 0;
 	$("#joinButton").click(function() {
 		var errorMsg = "";
 		var readyToJoin = true;
-		var gameCode = document.getElementById("gameCode").value;
-		var alias = document.getElementById("alias").value;
+		var local_gameCode = document.getElementById("gameCode").value;
+		var local_alias = document.getElementById("alias").value;
 
-		if (gameCode == ""){
+		if (local_gameCode == ""){
 			errorMsg += "Please enter a Game Code.\n"
 			readyToJoin = false;
 		}
-		if (alias == ""){
+		if (local_alias == ""){
 			errorMsg += "Please enter an Alias.\n"
 			readyToJoin = false;
 		}
@@ -105,7 +105,8 @@ var transitions = 0;
 		}
 		//If fields are okay, pass work off to joinGame function
 		else{
-			joinGame(gameCode)
+			alias = local_alias
+			joinGame(local_gameCode)
 		}
 	})
 
@@ -162,11 +163,13 @@ var transitions = 0;
 
 				//throw some error message
 				errorDialogue(response["error"]);
-				return false;
+				console.log(response);
 			}
 			else{//everything is valid
 				//storeGamecode
+				console.log("setting gameCode = ", param_gameCode)
 				gameCode = param_gameCode
+				console.log("gameCode is now", gameCode)
 
 				//transition screens
 				var mainDiv = document.getElementById("mainDiv");
@@ -177,13 +180,14 @@ var transitions = 0;
 				mainDiv.style.display = "none"
 				drawDiv.style.display = "inline";
 				cycleButton.style.display = "none";
-				return true;
+
+				console.log(response);
 			}
 		}
 		function register_failure(response) {
 			errorDialogue("\nCould not reach server with request.\n");
 			//throw some error message
-			return false;
+			console.log(response);
 		}
 		my_request("POST", url, data, register_success, register_failure);
 	}
