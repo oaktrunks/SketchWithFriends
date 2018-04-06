@@ -333,7 +333,7 @@ var transitions = 0;
 			drawDiv.style.visibility = "visible"
 			mainDiv.style.display = "none"
 			drawDiv.style.display = "inline";
-			sendButton.style.display = "none"
+			sendButton.style.display = "none";
 			resetButton.style.display = "none"
 		}
 
