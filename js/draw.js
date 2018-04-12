@@ -90,11 +90,12 @@ var transitions = 0;
 		var readyToJoin = true;
 		var local_gameCode = document.getElementById("gameCode").value;
 		var local_alias = document.getElementById("alias").value;
-
+		local_gameCode = local_gameCode.toUpperCase();
 		if (local_gameCode == ""){
 			errorMsg += "Please enter a Game Code.\n"
 			readyToJoin = false;
 		}
+
 		if (local_alias == ""){
 			errorMsg += "Please enter an Alias.\n"
 			readyToJoin = false;
