@@ -133,8 +133,8 @@ html,
 	/* Scale canvas with resize attribute to full size */
 	canvas[resize] {
         background-color: white;
-		width: 85%;
-		height: 75%;
+		width: 75%;
+		height: 80%;
 		border: 1px solid black;
 		padding: 0;
     	margin: auto;
