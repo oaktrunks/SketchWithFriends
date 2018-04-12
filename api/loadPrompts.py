@@ -3,6 +3,9 @@ This script reads the prompts.txt and puts the prompts into
 our database after wiping it of any previous promts
 '''
 
+#DEPRECATED IN FAVOR OF LOADING PROMPTS
+# IN API ROUTE /CREATEGAME
+
 from pymongo import MongoClient
 import json
 
