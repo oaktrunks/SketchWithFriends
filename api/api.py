@@ -102,6 +102,7 @@ def createGame():
     description:
         - Creates a fresh game in our mongoDB
         - Returns game code that will be used to join game
+        - Puts the prompts in the database
     params:
     returns:
         gamecode used in joining game
@@ -112,6 +113,17 @@ def createGame():
 
     #Create a blank state for game in db.gamecode collection
     document = {"gameState":0, "type": "gameState"}
+
+    try:
+        file = open("prompts.txt", "r")
+        promptList = []
+        for word in file:
+            promptList.append(word)
+        document["promptList"] = promptList
+    except:
+        print("Error: prompts file not read")
+        return jsonify({"success":False,"error":"Could not read prompts file on server"})
+
     result = db[gamecode].insert_one(document)
 
     if result.acknowledged is True :
