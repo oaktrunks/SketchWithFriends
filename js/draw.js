@@ -51,12 +51,17 @@ var transitions = 0;
 
 		canvas = document.getElementById("drawingBoard");
 
+		var deviceType = "desktop"
+		if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+			deviceType = "mobile"
+		}
 		data = {
 			"gamecode": gameCode,
 			"alias": alias,
 			"paths": JSON.stringify(lines),
 			"canvasWidth": canvas.width,
 			"canvasHeight": canvas.height,
+			"deviceType": deviceType,
 		};
 		console.log("sending drawing:",data)
 
@@ -248,7 +253,7 @@ var transitions = 0;
 				//console.log("paths:")
 				//console.log(response)
 				paths = JSON.parse(response["paths"])
-
+				deviceType = response['deviceType']
 				//Used for scaling
 				drawingWidth = response["canvasWidth"]
 				drawingHeight= response["canvasHeight"]
@@ -256,11 +261,20 @@ var transitions = 0;
 				canvasWidth = canvas.width
 				canvasHeight = canvas.height
 
-				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-					//Scaling is really weird on mobile, Hacky fix
-					drawingWidth / 5;
-					drawingHeight / 5;
+				if(deviceType = "mobile"){
+					canvasWidth = canvasWidth / 5
+					canvasHeight = canvasHeight / 5
 				}
+
+				// //loop through array and find highest width and height
+				// for (var i = 0; i < paths.length; i++) {
+				// 	drawingSegments = paths[i][1]['segments']
+				// 	for(var j = 0; j < drawingSegments.length; j++){
+				// 		for(var k = 0; k < drawingSegments[j].length; k++){
+				// 			console.log("seg")
+				// 		}
+				// 	}
+				// }
 
 				//segments = (48) [Array(3), Array(3), Array(3), Array(3), etc]
 				// array(3) = [Array(2), Array(2), Array(2)]

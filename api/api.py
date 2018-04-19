@@ -30,6 +30,7 @@ def sendDrawing():
         paths - JSON data of an array of paperJS paths
         canvasWidth
         canvasHeight
+        deviceType
     --------------------------------------------
     """
     gamecode = request.form['gamecode']
@@ -40,6 +41,7 @@ def sendDrawing():
     document['paths'] = request.form['paths']
     document['canvasWidth'] = int(request.form['canvasWidth'])
     document['canvasHeight'] = int(request.form['canvasHeight'])
+    document['deviceType'] = request.form['deviceType']
     document['number'] = db[gamecode].find().count()
 
     print("received drawing")
@@ -93,7 +95,7 @@ def getDrawing():
     if result is None:
         return jsonify({"success":False,"error":"API error when retrieving drawing"})
     else:
-        return jsonify({"success":True,"paths":result['paths'], "canvasWidth":result['canvasWidth'], "canvasHeight":result['canvasHeight']}) 
+        return jsonify({"success":True,"paths":result['paths'], "canvasWidth":result['canvasWidth'], "canvasHeight":result['canvasHeight'], "deviceType":result['deviceType']}) 
 
 @app.route('/getPrompt', methods=['POST'])
 def getPrompt():
