@@ -256,6 +256,12 @@ var transitions = 0;
 				canvasWidth = canvas.width
 				canvasHeight = canvas.height
 
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+					//Scaling is really weird on mobile, Hacky fix
+					drawingWidth / 5;
+					drawingHeight / 5;
+				}
+
 				//segments = (48) [Array(3), Array(3), Array(3), Array(3), etc]
 				// array(3) = [Array(2), Array(2), Array(2)]
 				//Iterate through array
