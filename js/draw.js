@@ -261,9 +261,10 @@ var transitions = 0;
 				canvasWidth = canvas.width
 				canvasHeight = canvas.height
 
-				if(deviceType = "mobile"){
-					canvasWidth = canvasWidth / 5
-					canvasHeight = canvasHeight / 5
+				if(deviceType == "mobile"){
+					console.log("is mobile")
+					drawingWidth = drawingWidth / 2.5
+					drawingHeight = drawingHeight / 2.5
 				}
 
 				// //loop through array and find highest width and height
