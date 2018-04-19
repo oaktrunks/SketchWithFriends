@@ -54,6 +54,10 @@
 	<div class="spinner"></div>
 </div>
 <script>
+	var viewPortScale = 1 / window.devicePixelRatio;
+
+	$('#viewport').attr('content', 'user-scalable=no, initial-scale='+viewPortScale+', width=device-width');
+	
 	$(setCanvasForDevice)
 	//Detect the type of device being used
 	function isMobileDevice() {
