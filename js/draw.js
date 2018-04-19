@@ -245,8 +245,8 @@ var transitions = 0;
 				currentDrawing -= 1;
 			}
 			else{
-				console.log("paths:")
-				console.log(response)
+				//console.log("paths:")
+				//console.log(response)
 				paths = JSON.parse(response["paths"])
 
 				//Used for scaling
@@ -263,39 +263,49 @@ var transitions = 0;
 				for (var i = 0; i < paths.length; i++) {
 					drawingSegments = paths[i][1]['segments']
 					//Debug
-					console.log("segments: ",drawingSegments)
+					//console.log("segments: ",drawingSegments)
 
 					//Scale the drawing to our current canas
 					for(var j = 0; j < drawingSegments.length; j++){
 						for(var k = 0; k < drawingSegments[j].length; k++){
 							//Width based
-							console.log("calc")
+							console.log("Scaling calc iteration")
+							console.log("Drawing Width: ", drawingWidth)
+							console.log("Drawing Height: ", drawingHeight)
+							console.log("Canvas Width: ", canvasWidth)
+							console.log("Canvas Height: ", canvasHeight)
 							//Get largest drawing pixel canvas size
 							if(drawingWidth > drawingHeight){
 								drawingDivider = drawingWidth
+								console.log(drawingWidth," > ", drawingHeight)
 							}
 							else{
 								drawingDivider = drawingHeight
+								console.log(drawingHeight," > ", drawingWidth)
 							}
 							//Get smallest host pixel canvas size
 							if(canvasWidth < canvasHeight){
 								canvasDivider = canvasWidth
+								console.log(canvasWidth," < ", canvasHeight)
 							}
 							else{
 								canvasDivider = canvasHeight
+								console.log(canvasHeight," < ", canvasWidth)
 							}
 							
 							//Scaling all the X positions
-							//console.log("drawingSegments[j][k][0] = ", drawingSegments[j][k][0] ," / ", drawingDivider," * ",canvasDivider)
+							console.log("drawingSegments[j][k][0] = ", drawingSegments[j][k][0] ," / ", drawingDivider," * ",canvasDivider)
 							drawingSegments[j][k][0] = drawingSegments[j][k][0] / drawingDivider * canvasDivider
-							//console.log( "=", drawingSegments[j][k][0])
+							console.log( "=", drawingSegments[j][k][0])
 							
 							//Scaling all the Y positions
-							//console.log("drawingSegments[j][k][1] = ", drawingSegments[j][k][1] ," / ", drawingDivider," * ",canvasDivider)
+							console.log("drawingSegments[j][k][1] = ", drawingSegments[j][k][1] ," / ", drawingDivider," * ",canvasDivider)
 							drawingSegments[j][k][1] = drawingSegments[j][k][1] / drawingDivider * canvasDivider
-							//console.log( "=", drawingSegments[j][k][1])
-							
+							console.log( "=", drawingSegments[j][k][1])
+
 						}
+						console.log("------------------")
+						console.log("Scaling calcs done")
 					}
 
 					//Initialze the new line

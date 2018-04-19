@@ -95,6 +95,40 @@ def getDrawing():
     else:
         return jsonify({"success":True,"paths":result['paths'], "canvasWidth":result['canvasWidth'], "canvasHeight":result['canvasHeight']}) 
 
+@app.route('/getPrompt', methods=['POST'])
+def getPrompt():
+    """
+    type: POST
+    description:
+        - returns a prompt from mongoDB, deletes prompt
+        - Possible race condition, concurrency issues.
+    params:
+        gamecode of game to join
+    returns:
+        result of operation; success true or false
+    --------------------------------------------
+    """
+    #Find random prompt in database, delete it from database
+    gamecode = request.form['gamecode']
+    if gamecode in db.collection_names():
+        result = db[gamecode].find_one({'type': "gameState"})
+        if result is not None:
+            promptList = result["promptList"]
+            prompt = random.choice(promptList)
+            promptList.remove(prompt)
+            result["promptList"] = promptList
+            result2 = db[gamecode].update_one({'type': "gameState"}, {"$set": result}, upsert = False)
+            if result2.acknowledged is True:
+                return jsonify({"success":True, "prompt": prompt})
+            else:
+                return jsonify({"success":False,"error":"Error retrieving prompt.\n"})
+            
+
+        else:
+            return jsonify({"success":False,"error":"Error retrieving prompt.\n"})
+    else:
+        return jsonify({"success":False,"error":"Game does not exist.\n"})
+
 @app.route('/createGame', methods=['GET'])
 def createGame():
     """
