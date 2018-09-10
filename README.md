@@ -1,2 +1,2 @@
-# SoftwareEng-Front
-end for our software engineering project
+# SketchWithFriends
+A web based multiplayer drawing game
